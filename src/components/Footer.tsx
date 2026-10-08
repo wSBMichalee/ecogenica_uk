@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 export function Footer() {
   return (
-    <footer className="bg-black text-white pt-20 pb-10 px-4 md:px-8">
+    <footer className="bg-[#1C2517] text-white pt-20 pb-10 px-4 md:px-8 border-t border-[var(--ipal-secondary)]/20">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
@@ -21,7 +21,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-bold mb-6 uppercase tracking-wider text-[var(--ipal-primary,#16a34a)]">Quick Links</h4>
+            <h4 className="text-lg font-bold mb-6 uppercase tracking-wider text-[#CDDC94]">Quick Links</h4>
             <ul className="space-y-4">
               <li><Link href="/en" className="text-white/70 hover:text-white transition-colors">Home</Link></li>
               <li><Link href="/en/products" className="text-white/70 hover:text-white transition-colors">Products</Link></li>
@@ -31,7 +31,7 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-bold mb-6 uppercase tracking-wider text-[var(--ipal-primary,#16a34a)]">Support</h4>
+            <h4 className="text-lg font-bold mb-6 uppercase tracking-wider text-[#CDDC94]">Support</h4>
             <ul className="space-y-4">
               <li><Link href="/en/contact" className="text-white/70 hover:text-white transition-colors">Contact Us</Link></li>
               <li><Link href="/en/support" className="text-white/70 hover:text-white transition-colors">Service & Support</Link></li>
@@ -41,11 +41,11 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-bold mb-6 uppercase tracking-wider text-[var(--ipal-primary,#16a34a)]">Contact</h4>
+            <h4 className="text-lg font-bold mb-6 uppercase tracking-wider text-[#CDDC94]">Contact</h4>
             <ul className="space-y-4 text-white/70">
               <li className="flex items-center gap-3">
                 <span className="font-semibold text-white">Phone:</span>
-                <a href="tel:+441164830473" className="hover:text-[var(--ipal-primary,#16a34a)] transition-colors">+44 116 483 0473</a>
+                <a href="tel:+441164830473" className="hover:text-[#CDDC94] transition-colors font-medium">+44 116 483 0473</a>
               </li>
               <li className="flex items-center gap-3">
                 <span className="font-semibold text-white">Availability:</span>
