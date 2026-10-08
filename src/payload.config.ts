@@ -5,8 +5,11 @@ import { buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
-import { Users } from './collections/Users'
-import { Media } from './collections/Media'
+import { ipalKit, mailAdapter } from '@intecion/ipal-kit'
+import { i18nConfig } from '@/i18n.config'
+import { Pages } from '@/collections/Pages'
+import { Media } from '@/collections/Media'
+import { Users } from '@/collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -18,7 +21,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Pages],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -26,9 +29,20 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || '',
+      connectionString: process.env.DATABASE_URI || '',
     },
   }),
   sharp,
-  plugins: [],
+  email: mailAdapter(),
+  plugins: [
+    ipalKit({
+      i18n: i18nConfig,
+      access: { authCollection: 'users' },
+      pages: { slug: 'pages' },
+      seo: { collections: ['pages'] },
+      forms: { redirectRelationships: ['pages'] },
+      adminRoute: '/its',
+      twoFactor: { issuer: 'Ecogenica' },
+    }),
+  ],
 })
