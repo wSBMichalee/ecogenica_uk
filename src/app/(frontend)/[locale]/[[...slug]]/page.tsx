@@ -18,6 +18,7 @@ import { ProductHeroComponent } from '@/blocks/ProductHero/Component'
 import { ProductSpecsTabComponent } from '@/blocks/ProductSpecsTab/Component'
 import { ProductSliderComponent } from '@/blocks/ProductSlider/Component'
 import { BenefitsGridComponent } from '@/blocks/BenefitsGrid/Component'
+import { BlogListWithFilters } from '@/components/BlogListWithFilters'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug?: string[] }> }): Promise<Metadata> {
   const resolvedParams = await params
@@ -1139,31 +1140,7 @@ function BlogIndexPage() {
         ctaTarget={1 as any}
       />
 
-      <div id="guides" className="max-w-7xl mx-auto px-4 w-full py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {posts.map(post => (
-            <Link key={post.meta.slug} href={`/en/blog/${post.meta.slug}`} className="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full">
-              <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden flex items-center justify-center p-8">
-                {/* Fallback pattern if no image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#1C2517] to-[#57703C] opacity-90"></div>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)]"></div>
-                <h3 className="text-white text-2xl font-bold z-10 text-center leading-tight">{post.meta.title}</h3>
-              </div>
-              <div className="p-8 flex flex-col flex-1">
-                <div className="flex items-center gap-3 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#57703C] bg-[#EFF1E3] px-3 py-1 rounded-full">{post.meta.category?.replace(/-/g, ' ')}</span>
-                  <span className="text-xs text-gray-500">{post.meta.lastReviewedAt}</span>
-                </div>
-                <h2 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-[#57703C] transition-colors line-clamp-2">{post.meta.title}</h2>
-                <p className="text-gray-600 mb-6 line-clamp-3 text-sm">{post.meta.excerpt}</p>
-                <div className="mt-auto font-semibold text-[#57703C] group-hover:underline text-sm uppercase tracking-wide">
-                  Read guide &rarr;
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <BlogListWithFilters posts={posts} />
     </div>
   )
 }
