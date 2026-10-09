@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { getAllPosts, getPostBySlug } from '@/lib/blog'
+import ReactMarkdown from 'react-markdown'
 import { HeroVideoComponent } from '@/blocks/HeroVideo/Component'
 import { AudienceSplitComponent } from '@/blocks/AudienceSplit/Component'
 import { ClimateRangeComponent } from '@/blocks/ClimateRange/Component'
@@ -39,6 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   if (p === 'oil-lpg-boiler-replacement') return { title: 'Replace Your Oil or LPG Boiler with a Heat Pump' }
   if (p === 'how-it-works') return { title: 'Heat Pump Installation: What Happens, Step by Step' }
   if (p === 'faq') return { title: 'Heat Pump FAQ | Ecogenica UK' }
+  if (p === 'blog') return { title: 'Blog - Ecogenica Heat Pumps' }
 
   if (p === 'product' || p === 'products' || p === 'heat-pumps') {
     if (slug.length > 1) {
@@ -108,6 +111,14 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
   if (slug && slug[0] === 'faq') {
     return <FaqPage />
+  }
+
+  if (slug && slug[0] === 'blog') {
+    if (slug.length === 1) {
+      return <BlogIndexPage />
+    } else {
+      return <BlogPostPage slug={slug[1]} />
+    }
   }
 
   if (slug && (slug[0] === 'product' || slug[0] === 'products' || slug[0] === 'heat-pumps')) {
@@ -1081,6 +1092,111 @@ function FaqPage() {
         ctaTarget={1 as any}
         theme="dark"
       />
+    </div>
+  )
+}
+
+function BlogIndexPage() {
+  const posts = getAllPosts()
+  
+  return (
+    <div className="flex flex-col min-h-screen pt-32 pb-20 w-full bg-[var(--ink-50,#f8fafc)]">
+      <div className="max-w-7xl mx-auto px-4 w-full mb-16 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-6 uppercase text-gray-900">Ecogenica Guides & Blog</h1>
+        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          Expert advice, industry news, and complete guides on air source heat pumps for UK homeowners.
+        </p>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <Link key={post.meta.slug} href={`/en/blog/${post.meta.slug}`} className="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full">
+              <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden flex items-center justify-center p-8">
+                {/* Fallback pattern if no image */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1C2517] to-[#57703C] opacity-90"></div>
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.1)_0%,transparent_100%)]"></div>
+                <h3 className="text-white text-2xl font-bold z-10 text-center leading-tight">{post.meta.title}</h3>
+              </div>
+              <div className="p-8 flex flex-col flex-1">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#57703C] bg-[#EFF1E3] px-3 py-1 rounded-full">{post.meta.category?.replace(/-/g, ' ')}</span>
+                  <span className="text-xs text-gray-500">{post.meta.lastReviewedAt}</span>
+                </div>
+                <h2 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-[#57703C] transition-colors line-clamp-2">{post.meta.title}</h2>
+                <p className="text-gray-600 mb-6 line-clamp-3 text-sm">{post.meta.excerpt}</p>
+                <div className="mt-auto font-semibold text-[#57703C] group-hover:underline text-sm uppercase tracking-wide">
+                  Read guide &rarr;
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function BlogPostPage({ slug }: { slug: string }) {
+  const post = getPostBySlug(slug)
+  
+  if (!post) {
+    return (
+      <div className="flex flex-col min-h-screen pt-40 pb-20 items-center text-center px-4">
+        <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+        <p className="text-gray-600 mb-8">The guide you are looking for does not exist.</p>
+        <Link href="/en/blog" className="btn-primary">Return to Blog</Link>
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex flex-col min-h-screen w-full bg-white pb-24">
+      {/* Blog Hero */}
+      <div className="bg-[#1C2517] text-white pt-40 pb-24 px-4 relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(205,220,148,0.1)_0%,transparent_50%)]"></div>
+        <div className="max-w-4xl mx-auto relative z-10 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 border border-white/20 mb-8">
+            <span className="text-xs font-bold text-[#CDDC94] uppercase tracking-wider">{post.meta.category?.replace(/-/g, ' ')}</span>
+          </div>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight">{post.meta.h1}</h1>
+          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">{post.meta.excerpt}</p>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-4 w-full -mt-10 relative z-20">
+        <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
+          
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 pb-8 mb-8 text-sm text-gray-500">
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-gray-900">Author:</span> {post.meta.author || 'Ecogenica Team'}
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="font-semibold text-gray-900">Updated:</span> {post.meta.lastReviewedAt}
+            </div>
+          </div>
+
+          {post.meta.keyTakeaways && post.meta.keyTakeaways.length > 0 && (
+            <div className="bg-[#EFF1E3] rounded-2xl p-8 mb-12">
+              <h3 className="text-lg font-bold mb-4 text-[#1C2517] uppercase tracking-wider">Key Takeaways</h3>
+              <ul className="space-y-3">
+                {post.meta.keyTakeaways.map((takeaway, i) => (
+                  <li key={i} className="flex gap-3 text-gray-800">
+                    <svg className="w-6 h-6 text-[#57703C] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{takeaway}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="prose prose-lg prose-green max-w-none">
+            <ReactMarkdown>{post.content}</ReactMarkdown>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

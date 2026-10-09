@@ -49,6 +49,9 @@ export function Header() {
           <Link href="/en/about" className="text-sm font-semibold uppercase tracking-wider text-black hover:text-[#57703C] transition-colors">
             About Us
           </Link>
+          <Link href="/en/blog" className="text-sm font-semibold uppercase tracking-wider text-black hover:text-[#57703C] transition-colors">
+            Blog
+          </Link>
           <Link href="/en/quote" className="text-sm font-semibold uppercase tracking-wider text-black hover:text-[#57703C] transition-colors">
             Online Quote
           </Link>
