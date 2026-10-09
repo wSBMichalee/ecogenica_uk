@@ -501,14 +501,6 @@ function AboutPage() {
 
       <div className="max-w-7xl mx-auto px-4 w-full py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-2xl">
-            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://ecogenica.co.uk/454891.png')" }} />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-8 left-8 text-white">
-              <div className="text-5xl font-black mb-2 drop-shadow-md">250,000+</div>
-              <div className="text-xl font-medium opacity-90 drop-shadow-md">Installations Worldwide</div>
-            </div>
-          </div>
           <div>
             <div className="inline-flex items-center gap-2 rounded-full bg-[#EFF1E3] px-4 py-1.5 mb-6 border border-[#CDDC94]/50">
               <span className="text-sm font-bold text-[#57703C] uppercase tracking-wider">Our Mission</span>
@@ -526,6 +518,14 @@ function AboutPage() {
               <p>
                 Because we manufacture the units ourselves and manage the installation network, we cut out the middlemen. This means you get a premium, MCS-certified installation at a price that makes sense.
               </p>
+            </div>
+          </div>
+          <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-2xl">
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://ecogenica.co.uk/454891.png')" }} />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-8 left-8 text-white">
+              <div className="text-5xl font-black mb-2 drop-shadow-md">250,000+</div>
+              <div className="text-xl font-medium opacity-90 drop-shadow-md">Installations Worldwide</div>
             </div>
           </div>
         </div>
