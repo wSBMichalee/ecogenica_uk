@@ -51,20 +51,20 @@ export function HeroVideoComponent({
           {videoMp4 && <source src={videoMp4.url || ''} type="video/mp4" />}
         </video>
         {/* Scrim Gradient & Overlay */}
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-black/50" />
         <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--ink-950)_0%,transparent_65%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_left,var(--ink-950)_0%,transparent_65%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--ink-950)_0%,transparent_65%)]" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 p-8 md:p-16 max-w-[800px] pb-24 md:pb-32 ml-auto w-full">
+      <div className="relative z-10 p-8 md:p-16 max-w-[800px] pb-24 md:pb-32 mr-auto w-full">
         <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-md px-4 py-2 border border-white/20 mb-8 animate-bounce-subtle">
           <Zap className="h-4 w-4 text-[var(--ipal-secondary)]" />
           <span className="text-sm font-semibold text-white tracking-wide uppercase">Boiler Upgrade Scheme 2026</span>
         </div>
         
-        <h1 className="text-5xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight text-white drop-shadow-lg">{heading}</h1>
-        {subheading && <p className="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl font-light leading-relaxed">{subheading}</p>}
+        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight text-white drop-shadow-lg">{heading}</h1>
+        {subheading && <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl font-light leading-relaxed">{subheading}</p>}
         
         {/* Trust Indicators */}
         <div className="flex flex-wrap items-center gap-6 mb-12">
