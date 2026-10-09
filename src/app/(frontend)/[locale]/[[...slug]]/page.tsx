@@ -490,34 +490,64 @@ function SupportPage() {
 
 function AboutPage() {
   return (
-    <div className="flex flex-col min-h-screen pt-32 px-4 pb-20 max-w-7xl mx-auto w-full">
-      <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center uppercase">About Ecogenica UK: heat pump manufacturer and installer</h1>
-      <p className="text-xl text-center text-gray-600 mb-16 max-w-3xl mx-auto">
-        Australia's #1 Heat Pump Manufacturer, now bringing ultra-efficient, low-carbon heating to the UK.
-      </p>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
-        <div className="rounded-3xl overflow-hidden h-[400px] relative">
-          <div className="absolute inset-0 bg-[#57703C] flex items-center justify-center text-white p-12">
-            <h2 className="text-4xl font-bold leading-tight">250,000+<br/><span className="text-2xl font-normal opacity-80">Installations Worldwide</span></h2>
-          </div>
-        </div>
-        <div>
-          <h2 className="text-3xl font-bold mb-6 uppercase">Our Mission</h2>
-          <p className="text-lg text-gray-600 mb-6">
-            At Ecogenica, our mission is simple: to make sustainable, low-cost heating accessible to everyone. We design and manufacture advanced air source heat pumps that dramatically reduce carbon emissions and energy bills.
-          </p>
-          <p className="text-lg text-gray-600 mb-6">
-            With over 250,000 successful installations in Australia, we've perfected our technology to operate flawlessly in extreme conditions. Now, we've engineered the Outback range specifically for the UK climate, utilizing the natural R290 refrigerant.
-          </p>
-        </div>
-      </div>
-      
-      <CtaBandComponent
-        heading="Join the green revolution"
-        subheading="Ready to reduce your carbon footprint and save on energy bills?"
+    <div className="flex flex-col min-h-screen w-full bg-[var(--ink-50,#f8fafc)]">
+      <HeroVideoComponent
+        heading="About Ecogenica UK"
+        subheading="Australia's #1 Heat Pump Manufacturer, now bringing ultra-efficient, low-carbon heating to the UK."
+        posterImage={{ url: 'https://ecogenica.co.uk/residential-hot-water-hero.jpg', alt: 'Ecogenica About Us' } as any}
         ctaLabel="VIEW OUR PRODUCTS"
         ctaTarget={1 as any}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 w-full py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] shadow-2xl">
+            <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: "url('https://ecogenica.co.uk/454891.png')" }} />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-8 left-8 text-white">
+              <div className="text-5xl font-black mb-2 drop-shadow-md">250,000+</div>
+              <div className="text-xl font-medium opacity-90 drop-shadow-md">Installations Worldwide</div>
+            </div>
+          </div>
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-[#EFF1E3] px-4 py-1.5 mb-6 border border-[#CDDC94]/50">
+              <span className="text-sm font-bold text-[#57703C] uppercase tracking-wider">Our Mission</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 uppercase leading-tight text-[#1C2517]">
+              Affordable, low-carbon heating for everyone.
+            </h2>
+            <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+              <p>
+                At Ecogenica, our mission is simple: to make sustainable, low-cost heating accessible to every home. We design and manufacture advanced air source heat pumps that dramatically reduce both carbon emissions and your energy bills.
+              </p>
+              <p>
+                With over <strong className="text-black">250,000 successful installations</strong> in Australia, we've perfected our technology to operate flawlessly in extreme conditions. Now, we've engineered the <strong className="text-black">Outback range</strong> specifically for the UK climate, utilizing the highly efficient, future-proof natural R290 refrigerant.
+              </p>
+              <p>
+                Because we manufacture the units ourselves and manage the installation network, we cut out the middlemen. This means you get a premium, MCS-certified installation at a price that makes sense.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <BenefitsGridComponent
+        heading="Why choose Ecogenica?"
+        subheading="We are both the manufacturer and the installer, giving you direct access to better prices, superior support, and unrivaled expertise."
+        benefits={[
+          { title: '250,000+ INSTALLS', description: 'Proven track record of successful installations in harsh climates.', iconName: 'Globe' },
+          { title: 'DIRECT TO YOU', description: 'No middlemen. You buy direct from the people who built the machine.', iconName: 'Factory' },
+          { title: 'UK-BASED TEAM', description: 'Our dedicated UK team is here to help before, during, and after your installation.', iconName: 'PhoneCall' },
+          { title: 'MCS CERTIFIED', description: 'Fully accredited so you can claim your £7,500 Boiler Upgrade Scheme grant.', iconName: 'Award' }
+        ]}
+      />
+
+      <CtaBandComponent
+        heading="Ready to join the green revolution?"
+        subheading="Get a fixed price quote for your home in under 60 seconds."
+        ctaLabel="GET YOUR QUOTE"
+        ctaTarget={1 as any}
+        theme="dark"
       />
     </div>
   )
@@ -1104,9 +1134,9 @@ function BlogIndexPage() {
       <HeroVideoComponent
         heading="Ecogenica Guides & Blog"
         subheading="Expert advice, industry news, and complete guides on air source heat pumps for UK homeowners."
-        posterImage={{ url: 'https://ecogenica.co.uk/residential-hot-water-hero.jpg', alt: 'Ecogenica Blog' }}
+        posterImage={{ url: 'https://ecogenica.co.uk/residential-hot-water-hero.jpg', alt: 'Ecogenica Blog' } as any}
         ctaLabel="VIEW ALL GUIDES"
-        ctaTarget="#guides"
+        ctaTarget={1 as any}
       />
 
       <div id="guides" className="max-w-7xl mx-auto px-4 w-full py-20">
