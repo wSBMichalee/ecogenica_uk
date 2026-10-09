@@ -30,8 +30,8 @@ export function GrantCheckerComponent({
     <section className="bg-[var(--ink-50,#f8fafc)] py-24 px-4 md:px-8">
       <div className="mx-auto max-w-4xl relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#1E2715] to-[#2B3B1C] text-white p-8 md:p-16 shadow-2xl">
         {/* Decorative elements */}
-        <div className="absolute top-0 right-0 -mr-32 -mt-32 h-96 w-96 rounded-full bg-[#CDDC94]/10 blur-3xl" />
-        <div className="absolute bottom-0 left-0 -ml-32 -mb-32 h-96 w-96 rounded-full bg-[#57703C]/20 blur-3xl" />
+        <div className="absolute top-0 right-0 -mr-32 -mt-32 h-96 w-96 rounded-full bg-[#CDDC94]/10 blur-3xl animate-blob" />
+        <div className="absolute bottom-0 left-0 -ml-32 -mb-32 h-96 w-96 rounded-full bg-[#57703C]/20 blur-3xl animate-blob [animation-delay:2s]" />
 
         <div className="relative z-10 text-center flex flex-col items-center">
           <div className="mb-6">

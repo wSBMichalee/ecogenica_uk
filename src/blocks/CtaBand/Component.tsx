@@ -33,8 +33,8 @@ export function CtaBandComponent({
         }`}
       >
         {/* Background blobs for visual interest */}
-        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-white/10 blur-3xl transition-all duration-700 group-hover:scale-125 group-hover:blur-2xl group-hover:bg-white/15" />
-        <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-white/10 blur-3xl transition-all duration-700 group-hover:scale-125 group-hover:blur-2xl group-hover:bg-white/15" />
+        <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-blob transition-all duration-700 group-hover:bg-white/15" />
+        <div className="absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-blob transition-all duration-700 group-hover:bg-white/15 [animation-delay:2s]" />
         
         <div className="relative z-10 max-w-3xl">
           <h2 className="text-4xl md:text-6xl font-bold mb-6">{heading}</h2>
