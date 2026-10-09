@@ -55,7 +55,7 @@ export function ProductLineupComponent({
                 </ul>
                 <Link
                   href={product.href}
-                  className="inline-flex w-fit items-center gap-2 rounded-full bg-[#CDDC94] text-black px-6 py-3 font-semibold transition-colors hover:bg-[#57703C] hover:text-white"
+                  className="btn-primary inline-flex w-fit items-center gap-2"
                 >
                   View Details
                   <ArrowRight className="h-5 w-5" />

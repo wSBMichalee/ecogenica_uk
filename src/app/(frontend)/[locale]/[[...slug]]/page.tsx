@@ -610,7 +610,7 @@ function ContactPage() {
               <label className="block text-sm font-bold mb-2">Message</label>
               <textarea className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:outline-none focus:border-[#57703C] h-32" placeholder="How can we help you?"></textarea>
             </div>
-            <button type="button" className="w-full bg-[#CDDC94] text-black font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-[#57703C] hover:text-white transition-colors">
+            <button type="button" className="btn-primary w-full uppercase tracking-wider py-4">
               Send Message
             </button>
           </form>
@@ -631,7 +631,7 @@ function QuotePage() {
       <div className="w-full max-w-3xl bg-white rounded-3xl p-8 border border-gray-100 shadow-xl text-center py-20">
         <h2 className="text-2xl font-bold mb-6">[ Spruce Embedded Form Placeholder ]</h2>
         <p className="text-gray-500 mb-8">The interactive Spruce quote flow will be embedded here.</p>
-        <button className="bg-[#57703C] text-white px-8 py-4 rounded-full font-bold uppercase tracking-wider">Start Quote Example</button>
+        <button className="btn-primary uppercase tracking-wider">Start Quote Example</button>
       </div>
     </div>
   )

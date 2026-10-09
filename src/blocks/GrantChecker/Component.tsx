@@ -52,7 +52,7 @@ export function GrantCheckerComponent({
                 />
                 <button
                   type="submit"
-                  className="rounded-xl bg-[#CDDC94] px-6 py-4 font-semibold text-black transition-colors hover:bg-[#57703C] hover:text-white flex items-center justify-center whitespace-nowrap"
+                  className="btn-primary flex items-center justify-center whitespace-nowrap"
                 >
                   Check Now
                 </button>
@@ -77,7 +77,7 @@ export function GrantCheckerComponent({
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#CDDC94] px-8 py-4 font-semibold text-black transition-colors hover:bg-[#57703C] hover:text-white"
+                  className="btn-primary inline-flex w-full sm:w-auto items-center justify-center gap-2"
                 >
                   Book Free Survey
                   <ArrowRight className="h-5 w-5" />

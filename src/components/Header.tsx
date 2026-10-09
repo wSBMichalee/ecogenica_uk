@@ -59,7 +59,7 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="/en/contact"
-            className="hidden rounded-full bg-[#CDDC94] px-7 py-3 text-sm font-semibold uppercase tracking-wide text-black transition-colors hover:bg-[#57703C] hover:text-white md:block"
+            className="btn-primary hidden md:inline-flex items-center text-sm py-2.5 px-6 uppercase tracking-wide"
           >
             Contact Us
           </Link>
