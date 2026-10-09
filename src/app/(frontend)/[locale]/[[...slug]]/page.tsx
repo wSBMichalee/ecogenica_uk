@@ -135,18 +135,41 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     }
 
     return (
-      <div className="flex flex-col min-h-screen pt-32 px-4 pb-20 max-w-7xl mx-auto w-full">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center uppercase">Outback R290 air source heat pumps (5–16 kW)</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Link href="/en/products/outback" className="group rounded-3xl bg-gray-50 p-8 border border-gray-100 hover:border-[#CDDC94] hover:shadow-xl transition-all">
-            <h2 className="text-3xl font-bold mb-4 uppercase group-hover:text-[#57703C]">Outback Range</h2>
-            <p className="text-lg text-gray-600">The R290 Monobloc Air Source Heat Pump designed for the UK climate.</p>
-          </Link>
-          <Link href="/en/products/wallaroo" className="group rounded-3xl bg-gray-50 p-8 border border-gray-100 hover:border-[#CDDC94] hover:shadow-xl transition-all">
-            <h2 className="text-3xl font-bold mb-4 uppercase group-hover:text-[#57703C]">Wallaroo</h2>
-            <p className="text-lg text-gray-600">The innovative all-in-one integrated Heat Pump and Cylinder (Coming Soon).</p>
-          </Link>
-        </div>
+      <div className="flex flex-col min-h-screen bg-[var(--ink-50,#f8fafc)]">
+        <HeroVideoComponent
+          heading="Ecogenica Heat Pumps"
+          subheading="Discover our range of advanced R290 air source heat pumps and integrated systems designed specifically for the UK climate."
+          posterImage={{ url: '/hero_section.png', alt: 'Ecogenica Products' } as any}
+        />
+        <ProductLineupComponent
+          heading="Our Range"
+          subheading="Choose the perfect heating solution for your home."
+          products={[
+            {
+              id: 'outback',
+              name: 'Outback Range',
+              description: 'The R290 Monobloc Air Source Heat Pump designed for the UK climate. Powerful, efficient, and exceptionally quiet.',
+              imageUrl: '/Outback-pro.png',
+              features: ['5–16 kW output', 'Up to 75°C flow temperature', 'A+++ ErP rating'],
+              href: '/en/products/outback',
+            },
+            {
+              id: 'wallaroo',
+              name: 'Wallaroo (Coming Soon)',
+              description: 'The innovative all-in-one integrated Heat Pump and Cylinder. Space-saving design with maximum efficiency.',
+              imageUrl: '/Wallaroo.png',
+              features: ['Integrated 200L cylinder', 'Ultra-compact footprint', 'Plug-and-play installation'],
+              href: '/en/products/wallaroo',
+            },
+          ]}
+        />
+        <CtaBandComponent
+          heading="Not sure which model is right for you?"
+          subheading="Get a fixed price quote and let our experts recommend the perfect system for your home."
+          ctaLabel="GET A QUOTE"
+          ctaTarget={1 as any}
+          theme="dark"
+        />
       </div>
     )
   }
