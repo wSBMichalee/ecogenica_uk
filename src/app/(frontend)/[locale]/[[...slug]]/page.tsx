@@ -1168,10 +1168,7 @@ function BlogPostPage({ slug }: { slug: string }) {
       <div className="max-w-4xl mx-auto px-4 w-full -mt-10 relative z-20">
         <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 md:p-12">
           
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 pb-8 mb-8 text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <span className="font-semibold text-gray-900">Author:</span> {post.meta.author || 'Ecogenica Team'}
-            </div>
+          <div className="flex flex-wrap items-center justify-start gap-4 border-b border-gray-100 pb-8 mb-8 text-sm text-gray-500">
             <div className="flex items-center gap-2">
               <span className="font-semibold text-gray-900">Updated:</span> {post.meta.lastReviewedAt}
             </div>
