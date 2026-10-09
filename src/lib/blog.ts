@@ -49,7 +49,7 @@ export function getAllPosts(): BlogPost[] {
           author: data.author || '',
           reviewedBy: data.reviewedBy || '',
           timeSensitive: data.timeSensitive || false,
-          lastReviewedAt: data.lastReviewedAt ? String(data.lastReviewedAt) : '',
+          lastReviewedAt: data.lastReviewedAt ? new Date(data.lastReviewedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '',
           coverImage: data.coverImage,
           keyTakeaways: data.keyTakeaways || [],
         },

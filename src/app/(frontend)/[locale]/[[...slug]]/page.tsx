@@ -1100,15 +1100,16 @@ function BlogIndexPage() {
   const posts = getAllPosts()
   
   return (
-    <div className="flex flex-col min-h-screen pt-32 pb-20 w-full bg-[var(--ink-50,#f8fafc)]">
-      <div className="max-w-7xl mx-auto px-4 w-full mb-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-6 uppercase text-gray-900">Ecogenica Guides & Blog</h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Expert advice, industry news, and complete guides on air source heat pumps for UK homeowners.
-        </p>
-      </div>
+    <div className="flex flex-col min-h-screen w-full bg-[var(--ink-50,#f8fafc)]">
+      <HeroVideoComponent
+        heading="Ecogenica Guides & Blog"
+        subheading="Expert advice, industry news, and complete guides on air source heat pumps for UK homeowners."
+        posterImage={{ url: 'https://ecogenica.co.uk/residential-hot-water-hero.jpg', alt: 'Ecogenica Blog' }}
+        ctaLabel="VIEW ALL GUIDES"
+        ctaTarget="#guides"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 w-full">
+      <div id="guides" className="max-w-7xl mx-auto px-4 w-full py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map(post => (
             <Link key={post.meta.slug} href={`/en/blog/${post.meta.slug}`} className="group flex flex-col bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 h-full">
