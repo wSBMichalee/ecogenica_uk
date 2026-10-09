@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState, useEffect, useRef } from 'react'
 
 export interface RefrigerantCompareProps {
   heading: string
@@ -9,6 +11,25 @@ export function RefrigerantCompareComponent({
   heading,
   subheading,
 }: RefrigerantCompareProps) {
+  const [inView, setInView] = useState(false)
+  const chartRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    if (chartRef.current) {
+      observer.observe(chartRef.current)
+    }
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section className="bg-[#1C2517] text-white py-24 px-4 md:px-8">
       <div className="mx-auto max-w-7xl flex flex-col lg:flex-row gap-16 items-center">
@@ -34,7 +55,7 @@ export function RefrigerantCompareComponent({
           </div>
         </div>
 
-        <div className="flex-1 w-full max-w-lg lg:max-w-none">
+        <div className="flex-1 w-full max-w-lg lg:max-w-none" ref={chartRef}>
           <div className="rounded-3xl bg-white/5 border border-white/10 p-8 shadow-2xl backdrop-blur-sm">
             <h3 className="text-xl font-bold mb-8 text-center text-white/50 uppercase tracking-widest">GWP Comparison</h3>
             
@@ -46,7 +67,7 @@ export function RefrigerantCompareComponent({
                   <span className="font-mono text-red-400">2,088</span>
                 </div>
                 <div className="h-6 w-full rounded-full bg-white/10 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-red-500 to-red-400" style={{ width: '100%' }} />
+                  <div className="h-full bg-gradient-to-r from-red-500 to-red-400 transition-all duration-[1500ms] ease-out" style={{ width: inView ? '100%' : '0%' }} />
                 </div>
               </div>
 
@@ -57,7 +78,7 @@ export function RefrigerantCompareComponent({
                   <span className="font-mono text-amber-400">675</span>
                 </div>
                 <div className="h-6 w-full rounded-full bg-white/10 overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-amber-500 to-amber-400" style={{ width: '32%' }} />
+                  <div className="h-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-[1500ms] ease-out delay-300" style={{ width: inView ? '32%' : '0%' }} />
                 </div>
               </div>
 
@@ -70,7 +91,7 @@ export function RefrigerantCompareComponent({
                   <span className="font-mono font-bold text-[#CDDC94]">3</span>
                 </div>
                 <div className="h-6 w-full rounded-full bg-white/10 overflow-hidden">
-                  <div className="h-full bg-[#CDDC94] shadow-[0_0_15px_rgba(205,220,148,0.5)]" style={{ width: '3%' }} />
+                  <div className="h-full bg-[#CDDC94] shadow-[0_0_15px_rgba(205,220,148,0.5)] transition-all duration-[1500ms] ease-out delay-700" style={{ width: inView ? '3%' : '0%' }} />
                 </div>
               </div>
             </div>
