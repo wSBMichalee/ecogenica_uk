@@ -19,6 +19,7 @@ import { ProductSpecsTabComponent } from '@/blocks/ProductSpecsTab/Component'
 import { ProductSliderComponent } from '@/blocks/ProductSlider/Component'
 import { BenefitsGridComponent } from '@/blocks/BenefitsGrid/Component'
 import { BlogListWithFilters } from '@/components/BlogListWithFilters'
+import { WarrantyRegistrationForm } from '@/components/WarrantyRegistrationForm'
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string; slug?: string[] }> }): Promise<Metadata> {
   const resolvedParams = await params
@@ -112,6 +113,10 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
 
   if (slug && slug[0] === 'faq') {
     return <FaqPage />
+  }
+
+  if (slug && slug[0] === 'warranty') {
+    return <WarrantyPage />
   }
 
   if (slug && slug[0] === 'blog') {
@@ -1223,6 +1228,68 @@ function BlogPostPage({ slug }: { slug: string }) {
           <div className="prose prose-lg prose-green max-w-none">
             <ReactMarkdown>{post.content}</ReactMarkdown>
           </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function WarrantyPage() {
+  return (
+    <div className="flex flex-col min-h-screen bg-white">
+      <HeroVideoComponent
+        heading="Warranty"
+        subheading="At Ecogenica, we stand by the quality of our heat pumps. Protect your investment with up to an 8-year manufacturer's warranty."
+        posterImage={{ url: '/hero_section.png', alt: 'Warranty' } as any}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 w-full py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          
+          {/* Content side */}
+          <div className="prose prose-lg prose-green max-w-none">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Standard Warranty</h3>
+            <p className="text-gray-600 mb-6">
+              This is included in the purchase price of the heat pump. The standard warranty provides a <strong>5 years warranty</strong> which covers the replacement of any parts deemed by Ecogenica to be defective due to a manufacturing fault.
+            </p>
+            <p className="text-gray-600 mb-6">
+              The Standard Warranty is activated by the installer on registering the heat pump using the form on this page. Product registration must be completed by the installer and must include required photos showing the nameplate, outdoor unit, pipework, and controller settings.
+            </p>
+            <div className="bg-[#EFF1E3] p-6 rounded-2xl mb-8">
+              <p className="text-sm text-gray-800 font-medium m-0">
+                <strong>Note:</strong> To comply with warranty requirements, the heat pump should be serviced once a year by the installer or an Ecogenica approved heating engineer and the homeowner should keep a log of all servicing work.
+              </p>
+            </div>
+
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium Warranty</h3>
+            <p className="text-gray-600 mb-8">
+              For added peace of mind, you can extend the Standard Warranty by a further 3 years to a total of <strong>8 years</strong> for a non-refundable and non-transferable charge of £350. The upgrade to Premium Warranty needs to be paid within 2 weeks of the heat pump commission date.
+            </p>
+
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Scope of Cover</h3>
+            <p className="text-gray-600 mb-4">
+              Both warranties apply only to the heat pump and controller and cover only parts resulting from a manufacturing fault identified by Ecogenica. It does not cover:
+            </p>
+            <ul className="list-disc pl-5 mb-8 text-gray-600 space-y-2">
+              <li>Ancillary items such as pipework, valves, filters, brackets, seals, cages, or third-party accessories such as cylinders, tanks, radiators etc.</li>
+              <li>Issues caused by incorrect installation, misuse, lack of servicing, or contaminated water.</li>
+              <li>External damage (power supply, weather damage, flooding, fire, vandalism, etc.).</li>
+            </ul>
+
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">Making a Claim & Status</h3>
+            <p className="text-gray-600 mb-4">
+              If you believe your heat pump is not working as it should, contact your installer or Ecogenica's Technical Support Team. If a product fault is confirmed to be defective due to a manufacturing fault, Ecogenica will provide the replacement parts free of charge.
+            </p>
+            <p className="text-gray-600 mb-8">
+              To check the activation date and type of warranty cover on your heat pump, please email <a href="mailto:warranty@ecogenica.co.uk" className="text-[#57703C] font-bold hover:underline">warranty@ecogenica.co.uk</a>.
+            </p>
+          </div>
+
+          {/* Form side */}
+          <div className="lg:sticky lg:top-32">
+            <WarrantyRegistrationForm />
+          </div>
+
         </div>
       </div>
     </div>
