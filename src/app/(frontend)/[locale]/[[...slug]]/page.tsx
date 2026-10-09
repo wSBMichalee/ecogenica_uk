@@ -119,6 +119,14 @@ export default async function Page({ params }: { params: Promise<{ locale: strin
     return <WarrantyPage />
   }
 
+  if (slug && slug[0] === 'manuals') {
+    return <ManualsPage />
+  }
+
+  if (slug && slug[0] === 'contact') {
+    return <ContactPage />
+  }
+
   if (slug && slug[0] === 'blog') {
     if (slug.length === 1) {
       return <BlogIndexPage />
@@ -1288,6 +1296,168 @@ function WarrantyPage() {
           {/* Form side */}
           <div className="lg:sticky lg:top-32">
             <WarrantyRegistrationForm />
+          </div>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ManualsPage() {
+  return (
+    <div className="flex flex-col min-h-screen bg-[var(--ink-50,#f8fafc)]">
+      <HeroVideoComponent
+        heading="Manuals & Guides"
+        subheading="Download installation manuals, user guides, and technical specifications for all Ecogenica products."
+        posterImage={{ url: '/hero_section.png', alt: 'Manuals' } as any}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 w-full py-24">
+        <h2 className="text-3xl font-bold mb-12 text-center">Outback Range</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all group flex flex-col items-center text-center">
+            <div className="w-16 h-16 bg-[#EFF1E3] text-[#57703C] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Installation Manual</h3>
+            <p className="text-gray-600 mb-6 text-sm flex-1">Complete technical guide for certified installers setting up the Outback Range.</p>
+            <a href="#" className="btn-primary w-full text-center">Download PDF</a>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all group flex flex-col items-center text-center">
+            <div className="w-16 h-16 bg-[#EFF1E3] text-[#57703C] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold mb-3">User Guide</h3>
+            <p className="text-gray-600 mb-6 text-sm flex-1">Homeowner's guide to operating the controller and getting the best efficiency.</p>
+            <a href="#" className="btn-primary w-full text-center">Download PDF</a>
+          </div>
+
+          <div className="bg-white rounded-3xl p-8 shadow-sm border border-gray-100 hover:shadow-xl transition-all group flex flex-col items-center text-center">
+            <div className="w-16 h-16 bg-[#EFF1E3] text-[#57703C] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <circle cx="12" cy="14" r="3"></circle>
+              </svg>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Technical Datasheet</h3>
+            <p className="text-gray-600 mb-6 text-sm flex-1">Detailed specifications, COP tables, and dimensions for all Outback models.</p>
+            <a href="#" className="btn-primary w-full text-center">Download PDF</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function ContactPage() {
+  return (
+    <div className="flex flex-col min-h-screen bg-white">
+      <HeroVideoComponent
+        heading="Technical Support"
+        subheading="Our UK-based support team is ready to assist you. Get in touch with us for technical queries, servicing, or general support."
+        posterImage={{ url: '/hero_section.png', alt: 'Contact Us' } as any}
+      />
+      
+      <div className="max-w-7xl mx-auto px-4 w-full py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          
+          <div className="space-y-12">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
+              <p className="text-gray-600 text-lg">
+                Whether you're an installer needing technical assistance on-site or a homeowner with questions about your system, we're here to help.
+              </p>
+            </div>
+
+            <div className="space-y-8">
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-[#EFF1E3] text-[#57703C] rounded-2xl flex items-center justify-center shrink-0">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Phone</h3>
+                  <p className="text-gray-600 mb-1">Mon-Fri: 8:00 AM – 5:00 PM</p>
+                  <a href="tel:+441164830473" className="text-[#57703C] font-bold text-lg hover:underline">+44 116 483 0473</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-[#EFF1E3] text-[#57703C] rounded-2xl flex items-center justify-center shrink-0">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Email</h3>
+                  <p className="text-gray-600 mb-1">General Inquiries & Support</p>
+                  <a href="mailto:info@ecogenica.co.uk" className="text-[#57703C] font-bold text-lg hover:underline">info@ecogenica.co.uk</a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-6">
+                <div className="w-14 h-14 bg-[#EFF1E3] text-[#57703C] rounded-2xl flex items-center justify-center shrink-0">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-2">Headquarters</h3>
+                  <p className="text-gray-600">
+                    Unit 4 Orton House Farm<br />
+                    Norton Lane<br />
+                    Little Orton, Atherstone<br />
+                    Leicestershire, CV9 3NR<br />
+                    United Kingdom
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-50 border border-gray-100 rounded-3xl p-8 md:p-12 shadow-sm">
+            <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
+            <form className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <label className="text-sm font-bold uppercase tracking-wider text-gray-700">First Name <span className="text-red-500">*</span></label>
+                  <input required type="text" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#57703C] transition-colors" />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-sm font-bold uppercase tracking-wider text-gray-700">Last Name <span className="text-red-500">*</span></label>
+                  <input required type="text" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#57703C] transition-colors" />
+                </div>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold uppercase tracking-wider text-gray-700">Email Address <span className="text-red-500">*</span></label>
+                <input required type="email" className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#57703C] transition-colors" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold uppercase tracking-wider text-gray-700">Inquiry Type</label>
+                <select className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#57703C] transition-colors appearance-none">
+                  <option>Technical Support</option>
+                  <option>Sales Inquiry</option>
+                  <option>Warranty Claim</option>
+                  <option>General Question</option>
+                </select>
+              </div>
+              <div className="space-y-2">
+                <label className="text-sm font-bold uppercase tracking-wider text-gray-700">Message <span className="text-red-500">*</span></label>
+                <textarea required rows={5} className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-[#57703C] transition-colors resize-none"></textarea>
+              </div>
+              <button type="submit" className="btn-primary w-full text-center py-4">Send Message</button>
+            </form>
           </div>
 
         </div>
