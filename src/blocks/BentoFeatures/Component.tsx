@@ -28,7 +28,7 @@ export function BentoFeaturesComponent({
           {subheading && <p className="text-xl text-black/60 max-w-2xl mx-auto">{subheading}</p>}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features?.map((feature, index) => {
             const Icon = feature.icon && (Icons as any)[feature.icon] ? (Icons as any)[feature.icon] : Icons.CheckCircle
             const isLarge = feature.size === 'large'
@@ -36,9 +36,9 @@ export function BentoFeaturesComponent({
             return (
               <div
                 key={feature.id || index}
-                className={`group relative overflow-hidden rounded-[2.5rem] p-10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl ${
+                className={`group relative overflow-hidden rounded-[2rem] p-8 md:p-10 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl flex flex-col justify-between min-h-[220px] ${
                   isLarge 
-                    ? 'md:col-span-2 bg-[#57703C] text-white shadow-xl' 
+                    ? 'md:col-span-2 lg:col-span-2 bg-[#57703C] text-white shadow-xl' 
                     : 'col-span-1 bg-white text-gray-900 border border-gray-100 shadow-sm hover:border-[#CDDC94]'
                 }`}
               >
@@ -56,19 +56,19 @@ export function BentoFeaturesComponent({
                 )}
 
                 <div className="flex h-full flex-col justify-between z-10 relative">
-                  <div className={`flex h-16 w-16 items-center justify-center rounded-2xl shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 ${
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl shadow-sm transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3 mb-6 ${
                     isLarge 
                       ? 'bg-[#1C2517] text-[#CDDC94]' 
                       : 'bg-[#EFF1E3] text-[#57703C]'
                   }`}>
-                    <Icon className="h-8 w-8" />
+                    <Icon className="h-7 w-7" />
                   </div>
-                  <div>
-                    <h3 className={`text-2xl md:text-3xl font-bold mb-3 ${isLarge ? 'text-white' : 'text-gray-900'}`}>
+                  <div className="mt-auto">
+                    <h3 className={`text-xl md:text-2xl font-bold mb-2 ${isLarge ? 'text-white' : 'text-gray-900'}`}>
                       {feature.title}
                     </h3>
                     {feature.description && (
-                      <p className={`text-base md:text-lg leading-relaxed ${isLarge ? 'text-white/80' : 'text-gray-600'}`}>
+                      <p className={`text-sm md:text-base leading-relaxed ${isLarge ? 'text-white/80' : 'text-gray-600'}`}>
                         {feature.description}
                       </p>
                     )}
@@ -79,7 +79,6 @@ export function BentoFeaturesComponent({
           })}
         </div>
       </div>
-
     </section>
   )
 }
